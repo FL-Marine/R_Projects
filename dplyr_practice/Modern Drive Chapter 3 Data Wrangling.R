@@ -28,3 +28,4 @@ View(btv_sea_flights_fall)
 btv_sea_flights_fall <- flights %>% 
   filter(origin == "JFK", (dest == "BTV" | dest == "SEA"), month >= 10)
 View(btv_sea_flights_fall)
+# same code as above^ just without the & symbol
