@@ -57,5 +57,4 @@ View(many_airports)
 # As a final note, we recommend that filter() should often be among the first verbs you consider applying to your data. 
 # This cleans your dataset to only those rows you care about, or put differently, it narrows down the scope of your data frame to just the observations you care about.
 
-
 # summarize variables -----------------------------------------------------
