@@ -58,3 +58,41 @@ View(many_airports)
 # This cleans your dataset to only those rows you care about, or put differently, it narrows down the scope of your data frame to just the observations you care about.
 
 # summarize variables -----------------------------------------------------
+
+## mean & standard deviation ----
+
+summary_temp <- weather %>% 
+  summarize(mean = mean(temp), std_dev = sd(temp))
+View(summary_temp)
+# For now summary_temp shows NA's
+# By default anytime calculating a summary statistic that has one or more NA, NA is returned
+# The workaround is setting na.rm = TRUE where rm means "remove"
+# This will ignore missing values and only return summary for all non-missing values
+
+summary_temp <- weather %>% 
+  summarize(mean = mean(temp, na.rm = TRUE), std_dev = sd(temp, na.rm = TRUE))
+View(summary_temp)
+# This code computes the mean and standard deviation of all non-missing values of temp
+# na.rm = TRUE are used as individually to mean() and sd()
+
+summary_temp_counts <- weather %>% 
+  summarize(count = n(temp))
+View(summary_temp_counts)
+# The returned value corresponds to the count of rows in the dataset
+
+### Ignoring missing values caution ----
+# na.rm is set to FALSE by default because R does not ignore rows with missing values
+# R is alerting me of the presence of missing data data
+# Need to be mindful of missing data and potential issues
+# DO NOT BLINDLY REMOVE NA'S UNTIL THERE IS AN UNDERSTANING OF WHAT TO DO WITH THEM
+
+# group_by rows -----------------------------------------------------------
+
+# Computing mean & sd by month which will result in 12 rows
+
+summary_monthly_temps <- weather %>% 
+  group_by(month) %>% 
+  summarize(mean = mean(temp, na.rm = TRUE),
+            std_dev = sd(temp, na.rm = TRUE))
+summary_monthly_temps
+# group_by function does not change df but changes the metadata
