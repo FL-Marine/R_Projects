@@ -96,3 +96,44 @@ summary_monthly_temps <- weather %>%
             std_dev = sd(temp, na.rm = TRUE))
 summary_monthly_temps
 # group_by function does not change df but changes the metadata
+# only after summarize() is applied does the df change
+
+## diamonds df example ----
+
+# running diamonds df
+diamonds
+# tibble reads 53,940 x 10
+# example of meta data
+
+diamonds %>% 
+  group_by(cut)
+# piping diamonds df into group_by(cut)
+# additional meta-data Groups: cut [5]
+# the data has not change it is still table of 53,940 x 10
+
+diamonds %>% 
+  group_by(cut) %>% 
+  summarize(avg_price = mean(price))
+# by combining group_by() with another data wrangling operation in this case summarize() will the data be transformed
+# tibble of 5 x 2
+
+diamonds %>% 
+  group_by(cut) %>% 
+  ungroup()
+# removing the grouping structure to restore original meta-data
+
+## counting summary function ----
+
+# n() counts number of rows/observations
+
+by_origin <- flights %>% 
+  group_by(origin) %>% 
+  summarize(count = n())
+by_origin
+
+# airports with most flights by origin
+# 1. EWR
+# 2. JFK
+# 3. LGA
+
+# Grouping by more than one variable --------------------------------------
