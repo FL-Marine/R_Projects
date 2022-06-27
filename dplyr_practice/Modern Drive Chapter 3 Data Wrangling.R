@@ -137,3 +137,22 @@ by_origin
 # 3. LGA
 
 # Grouping by more than one variable --------------------------------------
+
+by_origin_monthly <- flights %>% 
+  group_by(origin, month) %>% 
+  summarize(count = n())
+by_origin_monthly
+# Viewing flights leaving each NYC airport by month
+
+## Incorrect way to group more then 1 variable -----------------------------
+
+by_origin_monthly_incorrect <- flights %>% 
+  group_by(origin) %>% 
+  group_by(month) %>% 
+  summarize(count = n())
+by_origin_monthly_incorrect
+
+# month overwrote origin which changes grouping to only group by month.
+# Include all variables to be group_by adding a common between variables
+
+# mutate existing variables -----------------------------------------------
