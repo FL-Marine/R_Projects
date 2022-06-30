@@ -156,3 +156,52 @@ by_origin_monthly_incorrect
 # Include all variables to be group_by adding a common between variables
 
 # mutate existing variables -----------------------------------------------
+
+# create/compute new variables based on existing ones
+
+weather <- weather %>% 
+  mutate(temp_in_C = (temp - 32) / 1.8) 
+# converting temperature from Fahrenheit to Celsius
+# created a new variable temp_in_C = (temp - 32) / 1.8
+
+summary_monthly_temp <- weather %>% 
+  group_by(month) %>% 
+  summarize(mean_temp_in_F = mean(temp, na.rm = TRUE),
+            mean_temp_in_C = mean(temp_in_C, na.rm = TRUE))
+summary_monthly_temp
+# avg temp in both F and C
+
+flights <- flights %>% 
+  mutate(gain = dep_delay - arr_delay)
+# gain is time pilots make up for departing late but arriving early
+
+gain_summary <- flights %>% 
+  summarize(
+    min = min(gain, na.rm = TRUE),
+    q1 = quantile(gain, 0.25, na.rm = TRUE),
+    median = quantile(gain, 0.5, na.rm = TRUE),
+    max = max(gain, na.rm = TRUE),
+    mean = mean(gain, na.rm = TRUE),
+    sd = sd(gain, na.rm = TRUE),
+    missing = sum(is.na(gain))
+ )
+gain_summary
+# summary stats of the gained flight time
+
+ggplot(data = flights, mapping = aes(x = gain)) +
+  geom_histogram(color = "white", bins = 20)
+# histogram of gain df since it is a numerical variable
+# provides a different perspective when compared to gain_summary df
+
+flights <- flights %>% 
+  mutate(
+    gain = dep_delay - arr_delay,
+    hours = air_time / 60,
+    gain_per_hour = gain / hours
+)
+# Creating multiple new variables at once in same mutate()
+
+
+# arrange and sort rows ---------------------------------------------------
+
+
