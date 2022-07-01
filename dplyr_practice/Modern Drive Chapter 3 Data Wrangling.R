@@ -201,7 +201,20 @@ flights <- flights %>%
 )
 # Creating multiple new variables at once in same mutate()
 
-
 # arrange and sort rows ---------------------------------------------------
+# arrange allows for a data frame values to be sorted/reordered
 
+freq_dest <- flights %>% 
+  group_by(dest) %>% 
+  summarize(num_flights = n())
+freq_dest
+# data is sorted in alphabetical order of destination
+
+freq_dest %>% 
+  arrange(num_flights)
+# arrange automatically sorts in ascending order
+
+freq_dest %>% 
+  arrange(desc(num_flights))
+# to show data from lowest to highest need to add desc to get descending
 
