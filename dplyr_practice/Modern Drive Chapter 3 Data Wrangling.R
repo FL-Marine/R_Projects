@@ -218,3 +218,23 @@ freq_dest %>%
   arrange(desc(num_flights))
 # to show data from lowest to highest need to add desc to get descending
 
+# join data frames --------------------------------------------------------
+
+# merging/joining 2 data frames together
+# flights df has the carrier variable which is carrier code for different flights, UA
+# name is the full name of the airline UA = United Airlines
+# join on key variables which like primary keys
+View(airlines)
+
+## Matching “key” variable names -------------------------------------------
+
+# Must join flights & airlines dataframe on the key variable carrier since both df's has this field.
+
+flights_joined <- flights %>% 
+  inner_join(airlines, by = "carrier")
+View(flights)
+View(flights_joined)
+
+## Different “key” variable names ------------------------------------------
+
+ 
