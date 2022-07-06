@@ -254,5 +254,6 @@ name_dests <- flights %>%
 name_dests
 # This is a chain of pipe operators %>% that computes number of flights from NYC to each destination
 
-  
+  # Multiple “key” variables ------------------------------------------------
+
 
