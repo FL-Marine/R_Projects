@@ -237,4 +237,22 @@ View(flights_joined)
 
 ## Different “key” variable names ------------------------------------------
 
- 
+ # airport codes in airports df are under faa
+# flights has airport codes listed under origin & dest
+
+flights_with_airport_names <- flights %>% 
+  inner_join(airports, by = c("dest" = "faa"))
+View(flights_with_airport_names)
+# since the same column to join on was called someting else in another df, by = c("dest" = "faa") was used in join section
+
+name_dests <- flights %>% 
+  group_by(dest) %>% 
+  summarize(num_flights = n()) %>% 
+  arrange(desc(num_flights)) %>% 
+  inner_join(airports, by = c("dest" = "faa")) %>% 
+  rename(airport_name = name)
+name_dests
+# This is a chain of pipe operators %>% that computes number of flights from NYC to each destination
+
+  
+
