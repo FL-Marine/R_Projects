@@ -256,4 +256,12 @@ name_dests
 
   # Multiple “key” variables ------------------------------------------------
 
+# joining 2 data frames by multiple key variables 
+
+flights_weather_join <- flights %>% 
+  inner_join(weather, by = c("year", "month", "day", "hour", "origin"))
+View(flights_weather_join)
+# the combination of these 5 variables act to uniquely identify each observational unit in the weather data frame
+
+# Other Verbs -------------------------------------------------------------
 
