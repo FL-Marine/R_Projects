@@ -265,3 +265,42 @@ View(flights_weather_join)
 
 # Other Verbs -------------------------------------------------------------
 
+## select function ----------------------------------------------------------
+
+# select() only a subset of variables/columns
+# rename() variables/columns to have new names
+# Return only the top_n() values of a variable
+
+glimpse(flights)
+# Get quick view of dataframe
+
+flights %>% 
+  select(carrier, flight)
+# selecting the desired amount of variables
+
+flights_no_year <- flights %>% 
+  select(-year)
+flights_no_year
+# deselecting a variable
+
+flights_arr_times <- flights %>% 
+  select(month:day, arr_time:sched_arr_time)
+flights_arr_times
+# selecting a range of columns
+# This will select() all columns between month and day, as well as between arr_time and sched_arr_time, and drop the rest
+
+flights_reorder <- flights %>% 
+  select(year, month, day, hour, minute, time_hour, everything())
+glimpse(flights_reorder)
+# The select() function can also be used to reorder columns when used with the everything() helper function
+# reordering the following year, month, day, hour, minute, time_hour
+# everything() function keeps all the variables after reordering
+
+### helper functions ---------------------------------------------------------
+
+flights %>% select(starts_with("a"))
+flights %>% select(ends_with("delay"))
+flights %>% select(contains("time"))
+
+## rename variable ---------------------------------------------------------
+
