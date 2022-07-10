@@ -304,3 +304,20 @@ flights %>% select(contains("time"))
 
 ## rename variable ---------------------------------------------------------
 
+flights_time_new <- flights %>% 
+  select(dep_time, arr_time) %>% 
+  rename(departure_time = dep_time, arrival_time = arr_time)
+glimpse(flights_time_new)
+# renaming dep_time to departure_time & arr_time to arrival_time
+# a single = is used not == because there is no test for equality
+# new variable name comes before the equal sign
+
+## top_n values of a variable ----------------------------------------------
+
+name_dests %>% top_n(n = 10, wt = num_flights)
+# returning top 10 flights of num_flights 
+
+name_dests %>% 
+  top_n(n = 10, wt = num_flights) %>% 
+  arrange(desc(num_flights))
+# arranging flights by descending order
