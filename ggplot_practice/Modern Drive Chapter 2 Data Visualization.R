@@ -45,6 +45,31 @@ ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
 
 # To add a layer to the ggplot() function use a + sign. The added layer specifies 3rd component of the grammar the geometric object.
 
+## Overplotting ------------------------------------------------------------
+
+# Hard to tell true data points with previous plot since points are on top of each other
+# 2 methods to overcome overplotting
+#   1. adjusting transparency
+#   2. adding a random jitter or nudge to each data point
+
+## Method 1: Changing the transparency -------------------------------------
+
+ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
+  geom_point(alpha = 0.2)
+# Addressed overplotting by changing the transparency/opacity of the points by setting the alpha argument in geom_point()
+# Can change the alpha argument to be any value between 0 and 1, where 0 sets the points to be 100% transparent and 1 sets the points to be 100% opaque.
+# By default, alpha is set to 1
+# areas with a high-degree of overplotting are darker, whereas areas with a lower degree are less dark
+
+## Method 2: Jittering the points ------------------------------------------
+
+
+
+
+
+
+
+
 
 
 
