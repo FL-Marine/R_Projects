@@ -63,6 +63,25 @@ ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
 
 ## Method 2: Jittering the points ------------------------------------------
 
+ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
+  geom_point(alpha = 0.2)
+# Addressed overplotting by changing the transparency/opacity of the points by setting the alpha argument in geom_point()
+# Can change the alpha argument to be any value between 0 and 1, where 0 sets the points to be 100% transparent and 1 sets the points to be 100% opaque.
+# By default, alpha is set to 1
+# areas with a high-degree of overplotting are darker, whereas areas with a lower degree are less dark
+
+## Method 2: Jittering the points ------------------------------------------
+
+# jittering points means given them a small nudge in random direction
+# Think of jittering as shaking the points up a bit on the plot
+# Original values stay the same, jittering is just for visualization purposes
+
+ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
+  geom_jitter(width = 50, height = 50)
+# width & height corresponds to how hard you want the plot to be shaken up
+
+# Linegraphs --------------------------------------------------------------
+
 
 
 
