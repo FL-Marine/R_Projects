@@ -82,6 +82,20 @@ ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
 
 # Linegraphs --------------------------------------------------------------
 
+# Linegraphs show the relationship between two numerical variables when the variable on the x-axis, also called the explanatory variable, is of a sequential nature.
+
+# The most common examples of linegraphs have some notion of time on the x-axis: hours, days, weeks, years, etc
+
+# Linegraphs via geom_line ------------------------------------------------
+
+early_january_weather <- weather %>% 
+filter(origin == "EWR" & month == 1 & day <= 15)
+
+ggplot(data = early_january_weather, 
+       mapping = aes(x = time_hour, y = temp)) +
+  geom_line()
+
+# Histograms --------------------------------------------------------------
 
 
 
