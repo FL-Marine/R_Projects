@@ -86,7 +86,7 @@ ggplot(data = alaska_flights, mapping = aes(x = dep_delay, y = arr_delay)) +
 
 # The most common examples of linegraphs have some notion of time on the x-axis: hours, days, weeks, years, etc
 
-# Linegraphs via geom_line ------------------------------------------------
+## Linegraphs via geom_line ------------------------------------------------
 
 early_january_weather <- weather %>% 
 filter(origin == "EWR" & month == 1 & day <= 15)
@@ -97,11 +97,36 @@ ggplot(data = early_january_weather,
 
 # Histograms --------------------------------------------------------------
 
+# histograms are good for understanding:
+# 1. smallest & largest balues
+# 2. what is center value
+# 3. spread of values
+# 4. frequency of values
+
+# Histograms via geom_histogram ------------------------------------------
+
+ggplot(data = weather, mapping = aes(x = temp)) +
+  geom_histogram()
+# only 1 variable being mapped in aes
+
+# Warning: Removed 1 rows containing non-finite values (stat_bin).
+
+# The first message is telling us that the histogram was constructed using bins = 30 for 30 equally spaced bins.
+# This is known in computer programming as a default value; unless you override this default number of bins with a number you specify, R will choose 30 by default.
+
+ggplot(data = weather, mapping = aes(x = temp)) +
+  geom_histogram(color = "white")
+# values below 25 and above 80 are rare
+# added white boarders to make data easier to understand
 
 
+ggplot(data = weather, mapping = aes(x = temp)) +
+  geom_histogram(color = "white", fill = "steelblue")
+# Can adjust colors of bar by setting the fill to the desired color
 
+# running colors() allows to see all possible choice colors in R
 
-
+# Adjusting the bins ------------------------------------------------------
 
 
 
