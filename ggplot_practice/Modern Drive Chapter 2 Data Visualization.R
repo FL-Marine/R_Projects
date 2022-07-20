@@ -128,6 +128,28 @@ ggplot(data = weather, mapping = aes(x = temp)) +
 
 # Adjusting the bins ------------------------------------------------------
 
+## 2 methods to adjust bins----
+# 1.bins argument 
+# 2. binwidth argument
+
+### bins ----
+
+ggplot(data = weather, mapping = aes(x = temp)) +
+  geom_histogram(bins = 40, color = "white")
+# default bin # is 30
+# can use this method to override default bin width
+# specifying how many bins are in x-axis
+
+### binwidth ----
+
+ggplot(data = weather, mapping = aes(x = temp)) +
+  geom_histogram(binwidth = 10, color = "white")
+# instead of specifying the number of bins, we specify the width of the bins by using the binwidth argument 
+
+# Facets ------------------------------------------------------------------
+
+
+
 
 
 
