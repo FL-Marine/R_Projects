@@ -148,6 +148,27 @@ ggplot(data = weather, mapping = aes(x = temp)) +
 
 # Facets ------------------------------------------------------------------
 
+# faceting is used to split up a viz by values of another variable
+# This will create multiple copies of the same type of plot with matching x and y axes, but whose content will differ.
+
+ggplot(data = weather, mapping = aes(x = temp)) +
+  geom_histogram(binwidth = 5, color = "white") +
+  facet_wrap(~month)
+# Looking at hourly temps at 3 NYC airports 
+# Splitting up the temp for each histogram by month using the ~ tilde
+
+ggplot(data = weather, mapping = aes(x = temp)) +
+  geom_histogram(binwidth = 5, color = "white") +
+  facet_wrap(~ month, nrow = 4)
+# specify numner of rows and columns by using nrow and ncol
+# Faceted histogram is now going to have 4 rows instead of 3
+
+# Boxplots ----------------------------------------------------------------
+
+
+
+
+
 
 
 
