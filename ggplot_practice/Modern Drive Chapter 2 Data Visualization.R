@@ -165,6 +165,25 @@ ggplot(data = weather, mapping = aes(x = temp)) +
 
 # Boxplots ----------------------------------------------------------------
 
+ggplot(data = weather, mapping = aes(x = month, y = temp)) +
+  geom_boxplot()
+# Warning messages:
+#   1: Continuous x aesthetic -- did you forget aes(group=...)? 
+#   2: Removed 1 rows containing non-finite values (stat_boxplot). 
+# 
+# this plot does not provide information about temperature separated by month. 
+# The first warning message clues us in as to why. 
+# It is telling us that we have a “continuous”, or numerical variable, on the x-position aesthetic. Boxplots, however, require a categorical variable to be mapped to the x-position aesthetic. 
+# The second warning message is identical to the warning message when plotting a histogram of hourly temperatures: that one of the values was recorded as NA missing
+
+ggplot(data = weather, mapping = aes(x = factor(month), y = temp)) +
+  geom_boxplot()
+# We can convert the numerical variable month into a factor categorical variable by using the factor() function. 
+# So after applying factor(month), month goes from having numerical values just the 1, 2, …, and 12 to having an associated ordering.
+# With this ordering, ggplot() now knows how to work with this variable to produce the needed plot.
+
+# Barplots ----------------------------------------------------------------
+
 
 
 
